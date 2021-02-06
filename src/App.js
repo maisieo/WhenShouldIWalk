@@ -4,21 +4,21 @@ import Header from "./Components/Header.js"
 import Form from "./Components/Form.js"
 import Response from "./Components/Response.js"
 import WalkForm from "./Components/WalkForm.js"
+import WalkList from "./Components/WalkList.js"
 
 const BASEURL = "http://api.weatherapi.com/v1";
 const API_KEY = "05d2e662aca243ef99c223826210402";
 
 
 function App() {
-  const [weather, setWeather] = useState([]);
   const [error, setError] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [walks, setWalks] = useState([{}])
 
 
-  function addWalks(walk) {
+  function addWalk(walk) {
     let newWalkArray = [...walks, walk];
-    setWalks((walks) => newWalksArray);
+    setWalks((walks) => newWalkArray);
   }
 
 const getWeather = async location => {
@@ -58,7 +58,8 @@ const getWeather = async location => {
       {/* weather form doesn't know what it's doing with location */}
       {forecast && <Response forecast={forecast}/>}
        {/*weather here is the state defined at the top of the page  */}
-      <WalkForm />
+      <WalkForm onSubmit={(w) => addWalk(w)} />
+      {walks && <WalkList walks={walks} />}
       
 
     </div>

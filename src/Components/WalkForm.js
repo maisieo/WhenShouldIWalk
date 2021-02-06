@@ -1,9 +1,10 @@
 import React, {useState} from "react"
 import "./WalkForm.css"
 
-function WalkForm() {
+function WalkForm(props) {
     let [date, setDate] = useState("");
     let [time, setTime] = useState("");
+    let [title, setTitle] = useState("");
 
     function handleChange(event) {
         let {name, value} = event.target;
@@ -17,22 +18,33 @@ function WalkForm() {
                 break;
             default:
                 break;
-
+             case "title":
+                setTitle(value)  
+                break;
+          
         }
    }
 
    function handleSubmit(event) {
     event.preventDefault();
-    let walk = { date: date, time: time};
-            pops.onSubmit(walk);
+    let walk = { date: date, time: time, title: title};
+            props.onSubmit(walk);
     setDate('');
     setTime('');
+    setTitle('');
 }    
 
 return (
         <div className="WalkForm">
-            <h2> My walks</h2>
+            <h2> Enter a walk</h2>
             <form onSubmit={handleSubmit}>
+
+            <input id= "title"
+                 type="textarea"
+                  name="title"
+                  value={title}
+                  onChange={handleChange} />
+
                 <input
                  type="date"
                   name="date"
@@ -47,6 +59,7 @@ return (
                   value={time}
                   onChange={handleChange} />
                  
+                                 
                 <button>Add</button>
 
                 {/* display:
