@@ -3,3 +3,8 @@ img {
     height: 10rem;
 
 }
+
+#time {
+    color: red;
+    font-size: 60px;
+}
