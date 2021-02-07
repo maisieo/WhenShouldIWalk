@@ -1,5 +1,11 @@
+body {
+  background: #7877ac;
+  font-family: 'Raleway',"Gill Sans", "Gill Sans MT", 'Calibri', sans-serif;
+}
+
+
 .App {
-    background: #7877ac;
+    
     text-align: center;
 }
 
