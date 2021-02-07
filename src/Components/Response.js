@@ -48,8 +48,9 @@ function Response(props) {
       }
     }
 
+    console.log("These are dry hours", dryHours)
     // *** IF NO DRY HOURS, ALL HOURS ARE "DRY" HOURS***//   
-    if (dryHours.length === 0) rainyDayHours = dryHours;
+    if (dryHours.length === 0) rainyDayHours = sunnyHours;
         
 
     //**** SORTS HOURS INTO TEMERATURE TYPE *** //
@@ -59,6 +60,8 @@ function Response(props) {
     let rainyHot = [];
     let rainyComfortable = [];
     let rainyCold = [];
+
+    console.log("These are rainy day hours", rainyDayHours)
 
     if (rainyDayHours.length === 0) { //if not going to rain all day
         for (let i=0; i < dryHours.length; i++){ // loop through dry hours array to find right hour
@@ -85,7 +88,8 @@ function Response(props) {
                    rainyComfortable.push(rainyDayHours[i]) //push temps between 10 and 20 to rainycomfortable
                }
                else if (rainyDayHours[i][j].temp_c <= 10) {
-                   rainyCold.push(rainyDayHours[i]) // push temps < 10 to rainycold
+                   rainyCold.push(rainyDayHours[i]) // push temps <= 10 to rainycold
+                  
                }
                else if (rainyDayHours[i][j].temp_c > 20) {
                    rainyHot.push(rainyDayHours[i]); // push temps > 20 to rainyhot
@@ -113,19 +117,20 @@ let sortedHot = veryHot.sort(function(a,b){
 console.log("This is sorted hot", sortedHot);
 
 let sortedRainyHot = rainyHot.sort(function(a,b){
-    console.log("This is sorted rainy hot", sortedRainyHot);
-    return a[1].temp_c - b[1].temp_c // sort by lowest temp
+       return a[1].temp_c - b[1].temp_c // sort by lowest temp
 })
+console.log("This is sorted rainy hot", sortedRainyHot);
 
 let sortedRainyComfortable = rainyComfortable.sort(function(a,b){
-    console.log("This is sorted rainy comfortable", sortedRainyComfortable);
-    return a[1].totalprecip_mm - b[1].totalprecip_mm //sort by lowest percipitation
+     return a[1].totalprecip_mm - b[1].totalprecip_mm //sort by lowest percipitation
 })
+console.log("This is sorted rainy comfortable", sortedRainyComfortable);
 
 let sortedRainyCold =  rainyCold.sort(function(a,b){
-    console.log("This is sorted rainy cold", sortedRainyCold);
+    
     return a[1].totalprecip_mm - b[1].totalprecip_mm; //sort by lowest percipitation
-})
+}) 
+console.log("This is sorted rainy cold", sortedRainyCold);
 
 /**** DEFINING OPTIMUM TIME TO WALK ****/
 
@@ -136,6 +141,8 @@ if (sortedComfortable.length > 0) {
     //if it has entires, set optimum time to the first entry in the array
 }
     else (optimumTime  = (Number(sortedComfortable[0][0]) + ":00 a.m")) // or add am
+    weatherConditionsAtTime = "It will be " + sortedComfortable[0][1].condition.text.toLowerCase() + " at this time."; 
+    //sets the weather conditions for that exact time to display on page
 
 }
 
@@ -146,6 +153,9 @@ else if (sortedCold.length > 0) {
        //if it has entires, set optimum time to the first entry in the array
     }
     else (optimumTime  = (Number(sortedCold[0][0]) + ":00 a.m")) //or am
+    weatherConditionsAtTime = "It will be " + sortedCold[0][1].condition.text.toLowerCase() + " at this time."; 
+    //sets the weather conditions for that exact time to display on page
+
 }
 
 //now checks dry and hot array
@@ -155,6 +165,8 @@ else if (sortedHot.length > 0) {
      //if it has entires, set optimum time to the first entry in the array
     }
     else (optimumTime  = (Number(sortedHot[0][0]) + ":00 a.m"))//or "am"
+    weatherConditionsAtTime = "It will be " + sortedHot[0][1].condition.text.toLowerCase() + " at this time."; 
+    //sets the weather conditions for that exact time to display on page
 }
 
 // now checks comfortable rainy
@@ -164,14 +176,19 @@ else if (sortedRainyComfortable.length > 0) {
     //if it has entires, set optimum time to the first entry in the array
     }
     else (optimumTime  = (Number(sortedRainyComfortable[0][0]) + ":00 a.m")) //or "am"
-    
+    weatherConditionsAtTime = "It will be " + sortedRainyComfortable[0][1].condition.text.toLowerCase() + " at this time. It will be rainy all day."; 
+    //sets the weather conditions for that exact time to display on page
 }
+    
+
 // now checks hot and rainy
 else if (sortedRainyHot.length > 0) {
     if (Number(sortedRainyHot[0][0]) > 12)  {
     optimumTime  = (Number(sortedRainyHot[0][0])-12 + ":00 p.m.") //if time is greater than 12, take twelve away and add "pm"
     } //if it has entires, set optimum time to the first entry in the array
     else (optimumTime  = (Number(sortedRainyHot[0][0]) + ":00 a.m"))//or "am"
+    weatherConditionsAtTime = "It will be " + sortedRainyCold[0][1].condition.text.toLowerCase() + " at this time. It will be rainy all day"; 
+    //sets the weather conditions for that exact time to display on page
 }
 
 //now checks cold and rainy
@@ -180,6 +197,8 @@ else if (sortedRainyCold.length > 0) {
     optimumTime  = (Number(sortedRainyCold[0][0])-12 + ":00 p.m.")//if time is greater than 12, take twelve away and add "pm"
     } //if it has entires, set optimum time to the first entry in the array
     else (optimumTime  = (Number(sortedRainyCold[0][0]) + ":00 a.m"))//or "am"
+    weatherConditionsAtTime = "It will be " + sortedRainyCold[0][1].condition.text.toLowerCase() + " at this time. It will be rainy and cold all day"; 
+    //sets the weather conditions for that exact time to display on page
 }
 
 console.log("This is the optimum time -->", optimumTime)
@@ -189,7 +208,7 @@ if  (optimumTime === 0) { //if there is no optimum time, it must be after sunset
     optimumTimeMessage = "Tomorrow."
     lateMessage = "It's too late for a walk."
     weatherConditionsAtTime = ""; //no weather conditions show
-    
+        
 }
 else {optimumTimeMessage = optimumTime}
 
@@ -198,21 +217,21 @@ else {optimumTimeMessage = optimumTime}
     }
 
  else {
-    optimumTimeMessage = "Tomorrow."
+ optimumTimeMessage = "Tomorrow."
  lateMessage = "It's too late for a walk."
  weatherConditionsAtTime = "";
-
  console.log("This is the optimum time message", optimumTimeMessage)
 
  }
+
 
 return (
         <div className="Response"> 
               
                                       
-              <p> The perfect time for your walk is:<br>
+              <p> The optumum time for your walk is:<br>
               </br> <span id="time"> {optimumTimeMessage}</span><br></br> {lateMessage}</p>
-              <p></p>
+              <p> {weatherConditionsAtTime}</p>
                
         </div>
     )

@@ -38,26 +38,33 @@ return (
         <div className="WalkForm">
             <h2> Enter a walk</h2>
             <form onSubmit={handleSubmit}>
-
+            <label>Title
             <input id= "title"
+                label="title"
                  type="textarea"
                   name="title"
                   value={title}
                   onChange={handleChange} />
-
+                  </label>
+                    <br></br>
+                    <label> Date
                 <input
+                label="date"
                  type="date"
                   name="date"
                   value={date}
                   onChange={handleChange}
                   />
-
-
+                  </label>
+                    <br></br>
+                <label> Time
                 <input
-                 type="time"
-                  name="time"
-                  value={time}
-                  onChange={handleChange} />
+                type="time"
+                name="time"
+                value={time}
+                onChange={handleChange}
+                 />
+                 </label>
                  
                                  
                 <button>Add</button>
