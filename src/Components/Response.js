@@ -54,6 +54,7 @@ function Response(props) {
         
 
     //**** SORTS HOURS INTO TEMERATURE TYPE *** //
+   
     let comfortableTemp = [];
     let coldTemp = [];
     let veryHot = [];
@@ -100,6 +101,8 @@ function Response(props) {
     }   
 
 /***SORT TEMP ARRAYS BY A CONDITION ***/
+
+
 
 let sortedComfortable = comfortableTemp.sort(function(a,b){
      return a[1].humidity - b[1].humidity //sort by lowest humidity
@@ -204,7 +207,7 @@ else if (sortedRainyCold.length > 0) {
 console.log("This is the optimum time -->", optimumTime)
 
 /*** SHOWS DIFFERENT MESSAGE DEPENDING ON TIME OF DAY */
-if  (optimumTime === 0) { //if there is no optimum time, it must be after sunset
+if  (optimumTime === 0 || sunnyHours.length === 0) { //if there is no optimum time, it must be after sunset
     optimumTimeMessage = "Tomorrow."
     lateMessage = "It's too late for a walk."
     weatherConditionsAtTime = ""; //no weather conditions show
@@ -229,7 +232,7 @@ return (
         <div className="Response"> 
               
                                       
-              <p> The optumum time for your walk is:<br>
+              <p> The optimum time for your walk is:<br>
               </br> <span id="time"> {optimumTimeMessage}</span><br></br> {lateMessage}</p>
               <p> {weatherConditionsAtTime}</p>
                
