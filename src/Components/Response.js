@@ -1,5 +1,5 @@
 import React from "react";
-import "./Response.css";
+
 
 function Response(props) {
   let w = props.forecast;
@@ -156,9 +156,8 @@ function Response(props) {
     findTime(sortedRainyHot);
   } else if (sortedRainyCold.length > 0) {
     findTime(sortedRainyCold);
-  } else if (sortedRainyCold.length === 0) {
-    optimumTime = "Now";
   }
+  // add code here - if the sortedrainycold is empty &&& it's before sunset - best time to go out is now before it get dark
 
   // *** DEFINES A LATE MESSAGE *** //
   let lateMessage = "";
@@ -170,7 +169,7 @@ function Response(props) {
   return (
     <div className="Response">
       <p>
-        <h1>{w.location.name},<br></br> {w.location.country} </h1>
+        <h1 id="location">{w.location.name},<br></br> {w.location.country} </h1>
         {" "}
         The best time for your walk is:<br></br>
         <span id="time">{optimumTime} </span>
