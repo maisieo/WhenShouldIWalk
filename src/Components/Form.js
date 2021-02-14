@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Collapsible from "react-collapsible";
-import "./Form.css";
 
 function Form(props) {
   //  define the initial use state of the form
@@ -21,16 +19,17 @@ function Form(props) {
   };
   return (
     <div className="CityForm">
-      <h2> When should I take my walk? </h2>
+      <h2 id="question"> When should I take my walk? </h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Location
+          Location &nbsp;
           <input
+            id="locationField"
             type="text"
             name="location"
             value={location}
             onChange={handleChange}
-            placeholder="I live in..."
+            placeholder="✙"
           />
           {/* Don't want a submit button, need to find a way to submit just with "enter" */}
         </label>

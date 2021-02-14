@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./WalkForm.css";
 
 function WalkForm(props) {
   let [date, setDate] = useState("");
