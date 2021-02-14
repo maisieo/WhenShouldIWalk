@@ -135,7 +135,9 @@ function Response(props) {
     if (Number(arrayToCheck[0][0]) > 12) {
       console.log("Results in arraytoCheck[0][0]", arrayToCheck[0][0]);
       optimumTime = Number(arrayToCheck[0][0] - 12) + ".00 p.m.";
-    } else optimumTime = Number(arrayToCheck[0][0]) + ".00 a.m.";
+    } else if (Number(arrayToCheck[0][0]) === 12) {
+      optimumTime = Number(arrayToCheck[0][0]) + ".00 p.m.";
+    } else {optimumTime = Number(arrayToCheck[0][0]) + ".00 a.m."}
     weatherConditionsAtTime =
       "It will be " +
       arrayToCheck[0][1].condition.text.toLowerCase() +
@@ -168,9 +170,10 @@ function Response(props) {
   return (
     <div className="Response">
       <p>
+        <h1>{w.location.name},<br></br> {w.location.country} </h1>
         {" "}
-        The best time for your walk is: <br></br>
-        <span id="time"> {optimumTime} </span>
+        The best time for your walk is:<br></br>
+        <span id="time">{optimumTime} </span>
         <br></br> {lateMessage}
       </p>
       <p> {weatherConditionsAtTime}</p>
