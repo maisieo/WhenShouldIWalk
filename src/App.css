@@ -1,18 +1,24 @@
 body {
-  background: #d3d3dd;
-  font-family: 'Raleway',"Gill Sans", "Gill Sans MT", 'Calibri', sans-serif;
+  background: #e2e2e7;
+  font-family: "Raleway", "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
 }
-
 
 .App {
-    
-    text-align: center;
+  text-align: center;
 }
-
-
 
 p {
   font-size: 20px;
-  
+}
+body {
+  background: #e2e2e7;
+  font-family: "Raleway", "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
+}
 
+.App {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
 }

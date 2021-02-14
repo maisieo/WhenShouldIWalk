@@ -1,16 +1,22 @@
-import React from 'react';
+import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
-function Header (props) {
-    return(
-        <div>
-           <h2> When should I take my walk?
-            </h2>     
-
-        </div>
-
-    )
-    
+function Header() {
+  return (
+    <nav className="Navbar">
+      <ul>
+        <li>
+          <Link to="/" exact>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/mywalks">My walks</Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 export default Header;
