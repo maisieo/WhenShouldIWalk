@@ -5,7 +5,7 @@ function WalkList(props) {
     <div className="WalkList">
       <h2>My walks</h2>
       <ul>
-        {props.walks.length >= 1 &&
+        {props.walks &&
           props.walks.map((t) => (
             <li key={t.date}>
               {t.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{t.date}

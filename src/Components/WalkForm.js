@@ -34,7 +34,7 @@ function WalkForm(props) {
 
   return (
     <div className="WalkForm">
-      <h2> Enter a walk</h2>
+      <h2 id="EnterWalk"> Enter a walk</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Title
@@ -61,8 +61,7 @@ function WalkForm(props) {
         </label>
         <br></br>
         <label>
-          {" "}
-          Time
+           Time
           <input type="time" name="time" value={time} onChange={handleChange} />
         </label>
 
