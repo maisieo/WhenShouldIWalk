@@ -19,7 +19,7 @@ function Form(props) {
   };
   return (
     <div className="CityForm">
-      <h2 id="question"> When should I take my walk? </h2>
+      <h2 id="question"> When should I walk? </h2>
       <form onSubmit={handleSubmit}>
         <label>
           Location &nbsp;
@@ -29,7 +29,7 @@ function Form(props) {
             name="location"
             value={location}
             onChange={handleChange}
-            placeholder="✙"
+            placeholder="I live in..."
           />
           {/* Don't want a submit button, need to find a way to submit just with "enter" */}
         </label>

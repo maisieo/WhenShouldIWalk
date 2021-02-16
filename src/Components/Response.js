@@ -139,9 +139,8 @@ function Response(props) {
       optimumTime = Number(arrayToCheck[0][0]) + ".00 p.m.";
     } else {optimumTime = Number(arrayToCheck[0][0]) + ".00 a.m."}
     weatherConditionsAtTime =
-      "It will be " +
-      arrayToCheck[0][1].condition.text.toLowerCase() +
-      " at this time.";
+      "Weather at this time:  " + 
+      arrayToCheck[0][1].condition.text.toLowerCase()
   }
 
   if (sortedComfortableTemp.length > 0) {
@@ -169,7 +168,7 @@ function Response(props) {
   return (
     <div className="Response">
       <p>
-        <h1 id="location">{w.location.name},<br></br> {w.location.country} </h1>
+        <h1 id="location">{w.location.name}, {w.location.country} </h1>
         {" "}
         The best time for your walk is:<br></br>
         <span id="time">{optimumTime} </span>

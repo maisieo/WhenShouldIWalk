@@ -13,11 +13,11 @@ const API_KEY = "05d2e662aca243ef99c223826210402";
 function App() {
   const [error, setError] = useState(null);
   const [forecast, setForecast] = useState(null);
-  const [walks, setWalks] = useState([{}]);
+  const [walks, setWalks] = useState([]);
 
   function addWalk(walk) {
     let newWalkArray = [...walks, walk];
-    setWalks((walks) => newWalkArray);
+    setWalks(newWalkArray);
   }
 
   const getWeather = async (location) => {
@@ -54,6 +54,7 @@ function App() {
         <Route path="/" exact>
           <Form onSubmit={(location) => getWeather(location)} />
           {forecast && <Response forecast={forecast} />}
+          <br></br>
         </Route>
         <Route path="/mywalks">
           <WalkForm onSubmit={(w) => addWalk(w)} />
