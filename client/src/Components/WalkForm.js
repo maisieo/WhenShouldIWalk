@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 function WalkForm(props) {
-  let [date, setDate] = useState("");
-  let [time, setTime] = useState("");
-  let [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [title, setTitle] = useState("");
 
   function handleChange(event) {
     let { name, value } = event.target;
@@ -15,8 +15,6 @@ function WalkForm(props) {
       case "time":
         setTime(value);
         break;
-      default:
-        break;
       case "title":
         setTitle(value);
         break;
@@ -25,8 +23,8 @@ function WalkForm(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    let walk = { date: date, time: time, title: title };
-    props.onSubmit(walk);
+    // let walk = { date: date, time: time, title: title };
+    props.onSubmit(title, date, time);
     setDate("");
     setTime("");
     setTitle("");
@@ -49,7 +47,6 @@ function WalkForm(props) {
         </label>
         <br></br>
         <label>
-          {" "}
           Date
           <input
             label="date"
@@ -65,7 +62,7 @@ function WalkForm(props) {
           <input type="time" name="time" value={time} onChange={handleChange} />
         </label>
 
-        <button>Add</button>
+        <button>Add walk</button>
 
         {/* display:
                 Date at *time */}
