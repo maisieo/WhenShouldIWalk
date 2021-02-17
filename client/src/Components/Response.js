@@ -80,7 +80,7 @@ function Response(props) {
 
   /***SORT TEMP ARRAYS BY A CONDITION ***/
 
-  function sortTemps(oldArray, value, direction) {
+  sortTemps = (oldArray, value, direction) => {
     let newArray = oldArray.sort(function(a, b) {
       switch (value) {
         case "wind_mph":
@@ -102,7 +102,7 @@ function Response(props) {
       }
     });
     return newArray;
-  }
+  };
 
   let sortedComfortableTemp = sortTemps(
     comfortableTemp,
@@ -130,7 +130,7 @@ function Response(props) {
 
   // ** FINDS OPTIMUM TIME ** //
   let weatherConditionsAtTime = ""; // weather conditions at time of walk
-  function findTime(arrayToCheck) {
+  findTime = arrayToCheck => {
     if (Number(arrayToCheck[0][0]) > 12) {
       console.log("Results in arraytoCheck[0][0]", arrayToCheck[0][0]);
       optimumTime = Number(arrayToCheck[0][0] - 12) + ".00 p.m.";
@@ -142,7 +142,7 @@ function Response(props) {
     weatherConditionsAtTime =
       "Weather at this time:  " +
       arrayToCheck[0][1].condition.text.toLowerCase();
-  }
+  };
 
   if (sortedComfortableTemp.length > 0) {
     findTime(sortedComfortableTemp);
