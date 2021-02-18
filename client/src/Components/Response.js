@@ -183,7 +183,8 @@ function Response(props) {
       </p>
       <p>
         {" "}
-        {weatherConditionsAtTime} <img src={icon} />
+        <img id="icon" src={icon} /> <br></br>
+        {weatherConditionsAtTime}
       </p>
     </div>
   );
