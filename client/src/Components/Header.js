@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
 
 function Header() {
   return (
-    <nav className="Navbar">
-      <ul>
-        <li>
-          <Link to="/" exact>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/mywalks">My walks</Link>
-        </li>
-      </ul>
-    </nav>
+    <div>
+      <Navbar bg="light" variant="light">
+        <Navbar.Brand to="/" exact>
+          When should I walk?
+        </Navbar.Brand>
+        <Link to="/" exact>
+          Home
+        </Link>
+        <Link to="/mywalks">My walks</Link>
+      </Navbar>
+    </div>
   );
 }
 

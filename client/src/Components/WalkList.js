@@ -2,21 +2,30 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 
 function WalkList(props) {
+  let columns = props.walks[0] && Object.keys(props.walks[0]);
   return (
-    <div className="WalkList">
-      <h2>My walks</h2>
-
-      <ul>
-        {props.walks.map(w => (
-          <li key={w.id} className="list-items">
-            {w.title} on {w.date} at {w.time}
-            <button id="deleteButton" onClick={e => props.onDelete(w.id)}>
-              Delete
-            </button>
-          </li>
+    <Table borderless hover striped responsive="sm">
+      <thead>
+        <tr>
+          <td>#</td>
+          <th>Title</th>
+          <th>Date</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.walks.map(row => (
+          <tr>
+            {columns.map(column => (
+              <td>{row[column]}</td>
+            ))}
+            <td>
+              <button>Delete</button>
+            </td>
+          </tr>
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </Table>
   );
 }
 

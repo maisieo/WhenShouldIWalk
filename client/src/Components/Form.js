@@ -19,7 +19,7 @@ function Form(props) {
   };
   return (
     <div className="CityForm">
-      <h2 id="question"> When should I walk? </h2>
+      {/* <h2 id="question"> When should I walk? </h2> */}
       <form onSubmit={handleSubmit}>
         <label>
           Location &nbsp;

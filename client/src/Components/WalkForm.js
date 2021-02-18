@@ -45,7 +45,7 @@ function WalkForm(props) {
             onChange={handleChange}
           />
         </label>
-        <br></br>
+
         <label>
           Date
           <input
@@ -56,7 +56,7 @@ function WalkForm(props) {
             onChange={handleChange}
           />
         </label>
-        <br></br>
+
         <label>
           Time
           <input type="time" name="time" value={time} onChange={handleChange} />
