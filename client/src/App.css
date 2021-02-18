@@ -98,3 +98,7 @@ li {
 #EnterWalk {
   font-size: 40px;
 }
+
+#deleteButton {
+  translate: 10px;
+}
