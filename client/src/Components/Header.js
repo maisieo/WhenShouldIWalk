@@ -9,10 +9,12 @@ function Header() {
         <Navbar.Brand to="/" exact>
           When should I walk?
         </Navbar.Brand>
-        <Link to="/" exact>
+        <Link to="/" exact id="homelink">
           Home
         </Link>
-        <Link to="/mywalks">My walks</Link>
+        <Link to="/mywalks" id="homelink">
+          My walks
+        </Link>
       </Navbar>
     </div>
   );

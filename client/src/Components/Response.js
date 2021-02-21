@@ -9,23 +9,23 @@ function Response(props) {
   //**FINDS DAYLIGHT HOURS */
   let sunsetHour =
     Number(w.forecast.forecastday[0].astro.sunset.slice(0, 2)) + 12; // finds and converts sunset
-  let sunriseHour = Number(w.forecast.forecastday[0].astro.sunrise.slice(0, 2));
-  let startTime = null;
+  let sunriseHour = Number(w.forecast.forecastday[0].astro.sunrise.slice(0, 2)); //finds and converts sunset hours
 
   // **FINDS START TIME ***
-  let optimumTime = "";
-  let timeOfAccess = Number(w.location.localtime.slice(11, -3));
+  let startTime = null;
+  let optimumTime = ""; // optimum time needs to be defined as early as here because of the base case
+  let timeOfAccess = Number(w.location.localtime.slice(11, -3)); //Time the person accessed the website
   timeOfAccess < sunriseHour
     ? (startTime = sunriseHour)
-    : (startTime = timeOfAccess);
-  if (timeOfAccess > sunsetHour) optimumTime = "Tomorrow";
-  console.log("optimumTime", optimumTime);
+    : (startTime = timeOfAccess); // if time of access if before sunrise, start time is sunrise hour.
+  if (timeOfAccess > sunsetHour) optimumTime = "Tomorrow"; // if time of access is after sunset, optimal time is tomorrow
   let sunnyHours = []; //these are the sunny hours in a day
   for (let i = 0; i < unfilteredHours.length; i++) {
     if (i > startTime && i < sunsetHour) sunnyHours.push(unfilteredHours[i]);
   }
 
   /***FINDS DRY HOURS***/
+  //pushes the sunny hours to either a dryHours or rainyDayHours array
   let dryHours = []; //these are dry hours in a day
   let rainyDayHours = []; //hours to use on a rainy day (all)
   for (let i = 0; i < sunnyHours.length; i++) {
@@ -103,7 +103,7 @@ function Response(props) {
     });
     return newArray;
   };
-
+  // uses the above function to sort all the temperatures in each array.
   let sortedComfortableTemp = sortTemps(
     comfortableTemp,
     "humidity",
@@ -118,23 +118,13 @@ function Response(props) {
     "totalprecip_mm",
     "low-high"
   );
-  console.log(
-    "Sorted temps",
-    sortedComfortableTemp,
-    sortedVeryHot,
-    sortedCold,
-    sortedRainyCold,
-    sortedRainyHot,
-    sortedRainyComfortable
-  );
 
   // ** FINDS OPTIMUM TIME ** //
-  let weatherConditionsAtTime = "";
-  // let icon =
-  let icon = ""; // weather conditions at time of walk
+  let weatherConditionsAtTime = ""; // weather conditions at time of walk
+  let icon = "";
+  //functino to find the optimum time
   let findTime = arrayToCheck => {
     if (Number(arrayToCheck[0][0]) > 12) {
-      console.log("Results in arraytoCheck[0][0]", arrayToCheck[0][0]);
       optimumTime = Number(arrayToCheck[0][0] - 12) + ".00 p.m.";
     } else if (Number(arrayToCheck[0][0]) === 12) {
       optimumTime = Number(arrayToCheck[0][0]) + ".00 p.m.";
@@ -143,10 +133,11 @@ function Response(props) {
     }
     weatherConditionsAtTime =
       "Weather at this time:  " +
-      arrayToCheck[0][1].condition.text.toLowerCase();
-    icon = arrayToCheck[0][1].condition.icon;
+      arrayToCheck[0][1].condition.text.toLowerCase(); //sets weather conditions
+    icon = arrayToCheck[0][1].condition.icon; //sets icon
   };
 
+  //uses above function to find the optimum time by going through arrays in the following order:
   if (sortedComfortableTemp.length > 0) {
     findTime(sortedComfortableTemp);
   } else if (sortedCold.length > 0) {
@@ -159,14 +150,14 @@ function Response(props) {
     findTime(sortedRainyHot);
   } else if (sortedRainyCold.length > 0) {
     findTime(sortedRainyCold);
-  } else if (sortedRainyCold.length === 0) {
-    optimumTime = "Tomorrow";
+  } else if (timeOfAccess < sunsetHour) {
+    optimumTime = "Now"; // if none of the arrays have values, and time of access is before sunset, then
+    //the time is in the last hour before sunset. So people will need to get out now.
+  } else if (timeOfAccess === sunsetHour) {
+    optimumTime = "Tomorrow"; // best time is tomorrow if access time is after sunset
   }
-  // add code here - if the sortedrainycold is empty &&& it's before sunset - best time to go out is now before it get dark
-
   // *** DEFINES A LATE MESSAGE *** //
   let lateMessage = "";
-  let optimumTimeMessage = "";
   if (optimumTime === "Tomorrow") lateMessage += "It's too late for a walk.";
   if (optimumTime === "Now")
     lateMessage += "Get out quickly. It'll be dark within the hour.";

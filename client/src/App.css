@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-size: smaller;
 }
 
 body {
@@ -9,37 +10,44 @@ body {
   "Helvetica Neue", Helvetica, Arial, sans-serif; */
   /* background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
   background-position: 50% -40%; */
-  background-image: url(alex-plesovskich-WtAEJRrnuog-unsplash.jpg);
+  background-image: url(images/wallpapertip_minimalist-nature-wallpaper_810410_new.jpg);
   background-size: cover;
   /* background-color: blue; */
+  background-image: rgba(0, 0, 0, 0.5);
 }
 
 p {
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   text-shadow: #000 0px 0px 5px;
 }
 
-.App {
-  text-align: center;
-}
-
 input {
-  display: block;
-  background-color: white;
-  border-radius: 7px;
+  /* display: block; */
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  outline: 0;
+  border: 1px solid grey;
+  color: grey;
+  font-size: 20px;
 }
 
 form {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 label {
-  display: block;
+  /* display: block; */
   color: white;
   font-weight: bold;
-  font-size: larger;
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 ul {
@@ -48,14 +56,15 @@ ul {
 
 #location {
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: bolder;
 }
 
 #question {
   /* color: white;
   font-size: 60px; */
   padding-top: 55px;
-  padding-bottom: 55px;
+  padding-bottom: 40px;
   text-shadow: #000 0px 0px 5px;
   font-size: 4.5rem;
   font-weight: 800 !important;
@@ -66,7 +75,7 @@ ul {
 #locationField {
   width: 300px;
   height: 40px;
-  -webkit-transition: wifth 0.4s ease-in-out;
+  -webkit-transition: 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
   font-size: 20px;
   border-radius: 5px;
@@ -76,19 +85,14 @@ ul {
 }
 
 #locationField:focus {
-  border: 4.5px solid #262727;
-  font-size: 35px;
+  border: 1.5px solid grey;
+  font-size: 20px;
 }
 
 #time {
-  font-size: 90px;
-  color: rgb(184, 179, 179);
-  font-weight: bolder;
-  text-shadow: #000 0px 0px 5px;
-}
-
-a {
+  font-size: 80px;
   color: white;
+  font-weight: bolder;
   text-shadow: #000 0px 0px 5px;
 }
 
@@ -133,10 +137,30 @@ h2#EnterWalk {
 }
 
 img#icon {
-  height: 150px;
-  width: 150x;
+  height: 140px;
+  width: 140x;
 }
 
 button {
   font-size: 10px;
+  border-radius: 6%;
+}
+
+span.navbar-brand {
+  width: 25%;
+  padding-right: 20%;
+  font-size: larger;
+}
+.navbar-brand {
+  margin-left: 40%;
+  margin-right: 20%;
+}
+
+a {
+  margin-left: 4%;
+  color: white;
+}
+
+nav {
+  font-size: 20px;
 }
