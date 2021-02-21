@@ -1,23 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
+// import Navbar from "react-bootstrap/Navbar";
 
 function Header() {
   return (
-    <div>
-      <Navbar bg="light" variant="light">
-        <Navbar.Brand to="/" exact>
-          When should I walk?
-        </Navbar.Brand>
-        <Link to="/" exact id="homelink">
+    <div className="nav">
+      <input type="checkbox" id="nav-check"></input>
+      <div className="nav-header">
+        <div className="nav-title">When Should I Walk?</div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <div class="nav-links">
+        <Link to="/" exact>
           Home
         </Link>
-        <Link to="/mywalks" id="homelink">
-          My walks
+        <Link to="/mywalks" exact>
+          My Walks
         </Link>
-      </Navbar>
+      </div>
     </div>
   );
 }
-
 export default Header;
