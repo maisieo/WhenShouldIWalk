@@ -35,10 +35,9 @@ function WalkForm(props) {
       <h2 id="EnterWalk"> Enter a walk</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Title
+          Title&nbsp;
           <input
             id="title"
-            label="title"
             type="textarea"
             name="title"
             value={title}
@@ -47,18 +46,12 @@ function WalkForm(props) {
         </label>
 
         <label>
-          Date
-          <input
-            label="date"
-            type="date"
-            name="date"
-            value={date}
-            onChange={handleChange}
-          />
+          Date&nbsp;
+          <input type="date" name="date" value={date} onChange={handleChange} />
         </label>
 
         <label>
-          Time
+          Time&nbsp;
           <input type="time" name="time" value={time} onChange={handleChange} />
         </label>
 

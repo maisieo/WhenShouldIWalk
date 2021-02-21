@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form(props) {
+function CityForm(props) {
   //  define the initial use state of the form
   const [location, setLocation] = useState("");
 
@@ -19,7 +19,6 @@ function Form(props) {
   };
   return (
     <div className="CityForm">
-      {/* <h2 id="question"> When should I walk? </h2> */}
       <form onSubmit={handleSubmit}>
         <label>
           Location &nbsp;
@@ -31,11 +30,10 @@ function Form(props) {
             onChange={handleChange}
             placeholder="I live in..."
           />
-          {/* Don't want a submit button, need to find a way to submit just with "enter" */}
         </label>
       </form>
     </div>
   );
 }
 
-export default Form;
+export default CityForm;

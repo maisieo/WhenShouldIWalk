@@ -15,12 +15,17 @@ function WalkList(props) {
       </thead>
       <tbody>
         {props.walks.map(row => (
-          <tr>
-            {columns.map(column => (
-              <td>{row[column]}</td>
+          <tr key={row.id}>
+            {columns.map(e => (
+              <td key={row.id}>{row[e]}</td>
             ))}
             <td>
-              <button>Delete</button>
+              <button
+                id="deleteButton"
+                onClick={() => props.onDelete(props.walks[0].id)}
+              >
+                Delete{" "}
+              </button>
             </td>
           </tr>
         ))}

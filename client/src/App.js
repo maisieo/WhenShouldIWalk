@@ -4,7 +4,7 @@ import Header from "./Components/Header.js";
 import { Route, Switch } from "react-router-dom";
 import WalkForm from "./Components/WalkForm.js";
 import WalkList from "./Components/WalkList.js";
-import Form from "./Components/Form.js";
+import CityForm from "./Components/CityForm.js";
 import Response from "./Components/Response.js";
 
 const BASEURL = "http://api.weatherapi.com/v1";
@@ -100,7 +100,7 @@ function App() {
       <Switch>
         {/* Using 'exact' else route will match everything */}
         <Route path="/" exact>
-          <Form onSubmit={location => getWeather(location)} />
+          <CityForm onSubmit={location => getWeather(location)} />
           {forecast && <Response forecast={forecast} />}
           <br></br>
         </Route>
