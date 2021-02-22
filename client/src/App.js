@@ -7,6 +7,7 @@ import WalkList from "./Components/WalkList.js";
 import CityForm from "./Components/CityForm.js";
 import Response from "./Components/Response.js";
 
+//Gets the baseurl and apikey from the process env
 const BASEURL = "http://api.weatherapi.com/v1";
 const API_KEY = "05d2e662aca243ef99c223826210402";
 
@@ -15,24 +16,24 @@ function App() {
   let [forecast, setForecast] = useState(null);
   let [walks, setWalks] = useState([]);
 
+  //calls the getWalks function as an effect of opening the app
   useEffect(() => {
     getWalks();
   }, []);
 
+  //function to get the walks from the database
   const getWalks = () => {
     fetch("/walks")
       .then(result => result.json())
       .then(walks => {
         setWalks(walks);
       })
-      //  console.log(response, "Response!")
       .catch(error => {
         console.log(error);
       });
   };
 
-  console.log(walks, "This is walks!");
-
+  //Deletes walks from the database
   function deleteWalk(id) {
     console.log("Delete walk console log" + id);
     let options = {
@@ -50,6 +51,7 @@ function App() {
       });
   }
 
+  //Adds a walk to the database
   function addWalk(title, date, time) {
     let newWalk = { title, date, time };
     let options = {
@@ -68,11 +70,13 @@ function App() {
       });
   }
 
+  //gets the weather from the API
   const getWeather = async location => {
     console.log("location -->", location);
     let url = `${BASEURL}/forecast.json?key=${API_KEY}&q=${location}&days=1`;
     // sets the url for the query
     setForecast(null);
+    //resets to null
 
     try {
       console.log(url);

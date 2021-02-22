@@ -2,7 +2,8 @@ import React from "react";
 import Table from "react-bootstrap/Table";
 
 function WalkList(props) {
-  let columns = props.walks[0] && Object.keys(props.walks[0]);
+  // columns necessary in order to sort the information into rows rather than columns
+  let info = props.walks[0] && Object.keys(props.walks[0]);
   return (
     <Table borderless hover striped responsive="sm">
       <thead>
@@ -14,9 +15,11 @@ function WalkList(props) {
         </tr>
       </thead>
       <tbody>
+        {/* //maps the walks information */}
         {props.walks.map(row => (
           <tr key={row.id}>
-            {columns.map(e => (
+            {/* //maps the walk info into columns */}
+            {info.map(e => (
               <td key={row.id}>{row[e]}</td>
             ))}
             <td>

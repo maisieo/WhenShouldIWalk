@@ -11,6 +11,7 @@ function CityForm(props) {
     // sets the location field
   };
 
+  //defines what to do when a user submits. Sets location.
   const handleSubmit = e => {
     e.preventDefault();
     props.onSubmit(location);
@@ -18,6 +19,7 @@ function CityForm(props) {
     // resets to empty string
   };
   return (
+    //HTML for the form
     <div className="CityForm">
       <form onSubmit={handleSubmit}>
         <label>

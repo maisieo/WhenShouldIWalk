@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
+//Defines the use states for the walk form
 function WalkForm(props) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [title, setTitle] = useState("");
 
+  //Function to change the date, time and title when the form field change
   function handleChange(event) {
     let { name, value } = event.target;
 
@@ -21,9 +23,9 @@ function WalkForm(props) {
     }
   }
 
+  //Function to add the title, date and time to the table on submit
   function handleSubmit(event) {
     event.preventDefault();
-    // let walk = { date: date, time: time, title: title };
     props.onSubmit(title, date, time);
     setDate("");
     setTime("");
@@ -31,6 +33,7 @@ function WalkForm(props) {
   }
 
   return (
+    //Walk form
     <div className="WalkForm">
       <h2 id="EnterWalk"> Enter a walk</h2>
       <form onSubmit={handleSubmit}>
@@ -56,9 +59,6 @@ function WalkForm(props) {
         </label>
 
         <button>Add walk</button>
-
-        {/* display:
-                Date at *time */}
       </form>
     </div>
   );
