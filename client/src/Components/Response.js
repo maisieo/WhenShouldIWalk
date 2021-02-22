@@ -158,17 +158,18 @@ function Response(props) {
   }
   // *** DEFINES A LATE MESSAGE *** //
   let lateMessage = "";
-  if (optimumTime === "Tomorrow") lateMessage += "It's too late for a walk.";
+  if (optimumTime === "Tomorrow") lateMessage += "It's already dark.";
   if (optimumTime === "Now")
     lateMessage += "Get out quickly. It'll be dark within the hour.";
 
   return (
+    // This is the final response
     <div className="Response">
       <p>
         <h1 id="location">
           {w.location.name}, {w.location.country}{" "}
         </h1>{" "}
-        The best time for your walk is:<br></br>
+        The best time for your walk is<br></br>
         <span id="time">{optimumTime} </span>
         <br></br> {lateMessage}
       </p>

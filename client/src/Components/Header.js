@@ -16,6 +16,7 @@ function Header() {
           <span></span>
         </label>
       </div>
+      {/* This is where I have incorporated React Router into the header */}
       <div class="nav-links">
         <Link to="/" exact>
           Home
