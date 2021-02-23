@@ -37,8 +37,8 @@ function App() {
   function deleteWalk(id) {
     console.log("Delete walk console log" + id);
     let options = {
-      method: "DELETE",
-      body: JSON.stringify(walks)
+      method: "DELETE"
+      // body: JSON.stringify(walks)
     };
 
     fetch(`/walks/${id}`, options)

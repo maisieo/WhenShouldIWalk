@@ -17,17 +17,18 @@ function WalkList(props) {
       <tbody>
         {/* //maps the walks information */}
         {props.walks.map(row => (
-          <tr key={row.id}>
+          <tr>
             {/* //maps the walk info into columns */}
             {info.map(e => (
-              <td key={row.id}>{row[e]}</td>
+              <td>{row[e]}</td>
             ))}
             <td>
               <button
                 id="deleteButton"
-                onClick={() => props.onDelete(props.walks[0].id)}
+                // onClick={() => props.onDelete(props.walks[0].id)}
+                onClick={() => props.onDelete(row.id)}
               >
-                Delete{" "}
+                Delete
               </button>
             </td>
           </tr>
