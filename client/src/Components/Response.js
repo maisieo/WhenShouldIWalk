@@ -161,25 +161,39 @@ function Response(props) {
   if (optimumTime === "Tomorrow") lateMessage += "It's already dark.";
   if (optimumTime === "Now")
     lateMessage += "Get out quickly. It'll be dark within the hour.";
-
-  return (
-    // This is the final response
-    <div className="Response">
-      <p>
-        <h1 id="location">
-          {w.location.name}, {w.location.country}{" "}
-        </h1>{" "}
-        The best time for your walk is<br></br>
-        <span id="time">{optimumTime} </span>
-        <br></br> {lateMessage}
-      </p>
-      <p>
-        {" "}
-        <img id="icon" src={icon} /> <br></br>
-        {weatherConditionsAtTime}
-      </p>
-    </div>
-  );
+  if (optimumTime !== "Tomorrow" || optimumTime === "Now") {
+    return (
+      // This is the final response
+      <div className="Response">
+        <p>
+          <h1 id="location">
+            {w.location.name}, {w.location.country}{" "}
+          </h1>{" "}
+          The best time for your walk is<br></br>
+          <span id="time">{optimumTime} </span>
+        </p>
+        <p>
+          <img id="icon" src={icon} /> <br></br>
+          {weatherConditionsAtTime}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      // This is the final response
+      <div className="Response">
+        <p>
+          <h1 id="location">
+            {w.location.name}, {w.location.country}{" "}
+          </h1>{" "}
+          The best time for your walk is<br></br>
+          <span id="time">{optimumTime} </span>
+          <br></br> {lateMessage}
+        </p>
+        <p></p>
+      </div>
+    );
+  }
 }
 
 export default Response;
