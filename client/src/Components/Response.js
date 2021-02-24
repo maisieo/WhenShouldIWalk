@@ -61,8 +61,8 @@ function Response(props) {
       }
     }
   } else {
+    //if whole day is rainy
     for (let i = 0; i < rainyDayHours.length; i++) {
-      //if whole day is rainy
       for (let j = 0; j < rainyDayHours[i].length; j++) {
         if (
           (rainyDayHours[i][j].temp_c > 10) &
@@ -163,12 +163,12 @@ function Response(props) {
     lateMessage += "Get out quickly. It'll be dark within the hour.";
   if (optimumTime !== "Tomorrow" || optimumTime === "Now") {
     return (
-      // This is the final response
+      // This is the final response if a time is shown
       <div className="Response">
         <p>
           <h1 id="location">
-            {w.location.name}, {w.location.country}{" "}
-          </h1>{" "}
+            {w.location.name}, {w.location.country}
+          </h1>
           The best time for your walk is<br></br>
           <span id="time">{optimumTime} </span>
         </p>
@@ -180,7 +180,7 @@ function Response(props) {
     );
   } else {
     return (
-      // This is the final response
+      // This is the final response if "tomorrow" is shown
       <div className="Response">
         <p>
           <h1 id="location">

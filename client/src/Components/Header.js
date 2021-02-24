@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
+    //Header code
     <div className="nav">
       <input type="checkbox" id="nav-check"></input>
       <div className="nav-header">
