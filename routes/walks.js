@@ -16,11 +16,7 @@ router.get("/walks", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  //Whenever we access a DB with "async" and "await", we need the "try" and "catch"
   try {
-    //db data must be known, we tell MYSQL to select from the table called "inventory", since we are
-    //already in the DB rampup
-    //Has to be in MYSQL syntax
     let results = await db("SELECT * FROM walks");
 
     if (results.data.length) {
