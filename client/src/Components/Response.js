@@ -24,6 +24,7 @@ function Response(props) {
     if (i > startTime && i < sunsetHour) sunnyHours.push(unfilteredHours[i]);
   }
 
+  console.log("These are sunny hours", sunnyHours);
   /***FINDS DRY HOURS***/
   //pushes the sunny hours to either a dryHours or rainyDayHours array
   let dryHours = []; //these are dry hours in a day

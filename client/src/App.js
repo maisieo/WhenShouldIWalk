@@ -6,10 +6,14 @@ import WalkForm from "./Components/WalkForm.js";
 import WalkList from "./Components/WalkList.js";
 import CityForm from "./Components/CityForm.js";
 import Response from "./Components/Response.js";
+require("dotenv").config();
 
 //Gets the baseurl and apikey from the process env
-const BASEURL = "http://api.weatherapi.com/v1";
-const API_KEY = "05d2e662aca243ef99c223826210402";
+// const BASEURL = "http://api.weatherapi.com/v1";
+// const API_KEY = "05d2e662aca243ef99c223826210402";
+
+const BASEURL = process.env.BASEURL;
+const API_KEY = process.env.API_KEY;
 
 function App() {
   let [error, setError] = useState(null);
